@@ -2,264 +2,317 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<title>จ่ายเงินห้องเรียน</title>
-<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600&display=swap" rel="stylesheet">
+<title>Holyshit ITจำหน่ายอุปกรณ์คอมพิวเตอร์เเละเกมมิ่งเกียร์(มีหน้าร้าน)</title>
 
 <style>
-:root {
-  --bg: #f0f4f8;
-  --card: #ffffff;
-  --primary: #4CAF50;
-  --danger: #f44336;
-  --text: #333;
-  --radius: 14px;
-  --shadow: 0 10px 25px rgba(0,0,0,0.1);
+
+body{
+margin:0;
+font-family:Segoe UI;
+background:#0f172a;
+color:white;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+/* NAVBAR */
 
-body {
-  font-family: 'Prompt', sans-serif;
-  background: var(--bg);
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+.navbar{
+background:#020617;
+padding:15px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-bottom:1px solid #1e293b;
 }
 
-.container {
-  background: var(--card);
-  width: 100%;
-  max-width: 480px;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 30px;
+.logo{
+font-size:22px;
+font-weight:bold;
+color:#38bdf8;
 }
 
-h1 {
-  text-align: center;
-  color: var(--primary);
-  margin-bottom: 20px;
+.search{
+width:40%;
 }
 
-/* QR */
-.qr-section {
-  text-align: center;
-  background: #f9fafb;
-  border-radius: 12px;
-  padding: 15px;
-  margin-bottom: 25px;
+.search input{
+width:100%;
+padding:10px;
+border-radius:6px;
+border:none;
+outline:none;
 }
 
-.qr-section p {
-  font-size: 0.95rem;
-  color: #555;
-  margin-bottom: 10px;
+/* PRODUCT GRID */
+
+.container{
+padding:30px;
 }
 
-.qr-img {
-  width: 140px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
 }
 
-/* Form */
-label {
-  display: block;
-  margin-top: 15px;
-  font-weight: 600;
-  color: #555;
+/* PRODUCT CARD */
+
+.card{
+background:#020617;
+border:1px solid #1e293b;
+border-radius:10px;
+overflow:hidden;
+transition:0.3s;
 }
 
-input, textarea {
-  width: 100%;
-  padding: 12px 14px;
-  margin-top: 6px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
+.card:hover{
+transform:translateY(-5px);
+box-shadow:0 10px 25px rgba(0,0,0,0.6);
 }
 
-input:focus, textarea:focus {
-  outline: none;
-  border-color: var(--primary);
+.card img{
+width:100%;
+height:180px;
+object-fit:cover;
 }
 
-/* Buttons */
-.actions {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 25px;
+.card-body{
+padding:15px;
 }
 
-button {
-  width: 48%;
-  padding: 14px;
-  font-size: 1rem;
-  border-radius: 12px;
-  border: none;
-  cursor: pointer;
-  color: #fff;
+.card h3{
+font-size:16px;
+margin:5px 0;
 }
 
-.deposit { background: var(--primary); }
-.withdraw { background: var(--danger); }
-
-button:hover { opacity: 0.9; }
-
-/* Info */
-.log, .balance {
-  margin-top: 18px;
-  padding: 14px;
-  background: #f9fafb;
-  border-radius: 10px;
-  font-size: 0.95rem;
+.price{
+color:#22c55e;
+font-size:18px;
+margin:8px 0;
 }
 
-.log { border-left: 4px solid var(--primary); }
-.balance { border-left: 4px solid #ff9800; }
-
-/* Modal */
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.4);
+button{
+background:#2563eb;
+border:none;
+color:white;
+padding:10px;
+width:100%;
+border-radius:6px;
+cursor:pointer;
+font-weight:bold;
 }
 
-.modal-content {
-  background: #fff;
-  max-width: 360px;
-  margin: 25% auto;
-  padding: 20px;
-  border-radius: 14px;
-  text-align: center;
+button:hover{
+background:#1d4ed8;
 }
 
-.close {
-  float: right;
-  cursor: pointer;
-  font-size: 22px;
+/* MODAL */
+
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+align-items:center;
+justify-content:center;
 }
 
-#okButton {
-  margin-top: 15px;
-  padding: 10px 20px;
-  background: var(--primary);
-  color: #fff;
-  border: none;
-  border-radius: 8px;
+.modal-content{
+background:#020617;
+padding:25px;
+border-radius:10px;
+width:320px;
+border:1px solid #1e293b;
 }
+
+input,textarea{
+width:100%;
+padding:8px;
+margin:8px 0;
+border-radius:5px;
+border:1px solid #1e293b;
+background:#0f172a;
+color:white;
+}
+
+/* FOOTER */
+
+.footer{
+background:#020617;
+margin-top:40px;
+padding:20px;
+text-align:center;
+border-top:1px solid #1e293b;
+}
+
+.footer a{
+color:#38bdf8;
+text-decoration:none;
+font-weight:bold;
+}
+
 </style>
 </head>
 
 <body>
-<div class="container">
-  <h1>💰 จ่ายเงินห้องเรียน</h1>
 
-  <!-- QR -->
-  <div class="qr-section">
-    <p>สแกน QR เพื่อโอนเงิน</p>
-    <img class="qr-img"
-      src="https://img5.pic.in.th/file/secure-sv1/2369ea33-0da6-4159-b2f1-2e89189af0ee.md.jpg"
-      alt="QR Code">
-  </div>
+<div class="navbar">
+<div class="logo">⚡  Holyshit IT จำหน่ายอุปกรณ์คอมพิวเตอร์เเละเกมมิ่งเกียร์(มีหน้าร้าน)</div>
 
-  <label>ชื่อ</label>
-  <input id="name" placeholder="เช่น สมชาย">
-
-  <label>จำนวนเงิน (บาท)</label>
-  <input id="amount" type="number" placeholder="เช่น 100">
-
-  <label>หมายเหตุ</label>
-  <textarea id="note" rows="3"></textarea>
-
-  <div class="actions">
-    <button class="deposit" onclick="addSaving()">ฝากเงิน</button>
-    <button class="withdraw" onclick="withdrawSaving()">ถอนเงิน</button>
-  </div>
-
-  <div class="log" id="logContainer"></div>
-  <div class="balance" id="balanceContainer">ยอดเงินรวม: 0 บาท</div>
+<div class="search">
+<input placeholder="ค้นหาสินค้า...">
+</div>
 </div>
 
-<!-- Modal -->
-<div id="successModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p id="modalMessage"></p>
-    <button id="okButton">OK</button>
-  </div>
+<div class="container">
+
+<div class="products">
+
+<div class="card">
+<img src="https://media.discordapp.net/attachments/1443627625108082779/1480882006811345097/pngtree-high-performance-gaming-pc-with-rgb-png-image_14871124.png?ex=69b14a57&is=69aff8d7&hm=308405ad8b7d0f32ef30a97269bac4d72b4d273801336cc86a96a6dca887ade8&=&format=webp&quality=lossless">
+<div class="card-body">
+<h3>คอมเซ็ทRYZEN 7 9800X3D RTX5090Ti RAM 32GB </h3>
+<div class="price">190,000 บาท</div>
+<button onclick="buy('คอมเซ็ทRYZEN 7 9800X3D RTX5090Ti RAM 32GB')">สั่งซื้อ</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://speedcom.co.th/cdn/shop/files/AMD-Ryzen-7-9800X3D-4.4GHz-8C-16T-AM5-100-100001084WOF_-SpeedCom-351678899.webp?v=1743864689&width=1214">
+<div class="card-body">
+<h3> ryzen 7 9800x3d</h3>
+<div class="price">18,900 บาท</div>
+<button onclick="buy('Gaming ryzen 7 9800x3d')">สั่งซื้อ</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://static.computeandmore.com/large_images/eb402944-5d00-48a5-9f62-4043de233b2e.png">
+<div class="card-body">
+<h3>MeNVIDIA GeForce RTX 5090</h3>
+<div class="price">150,000 บาท</div>
+<button onclick="buy('MeNVIDIA GeForce RTX 5090')">สั่งซื้อ</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://ascenti.co.th/main/wp-content/uploads/2020/11/Hyperx-Solocast.png">
+<div class="card-body">
+<h3>HyperX SoloCast</h3>
+<div class="price">1,490 บาท</div>
+<button onclick="buy('HyperX SoloCast')">สั่งซื้อ</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://notebookspec.com/web/wp-content/uploads/2016/11/21ee9085a2eb.jpg">
+<div class="card-body">
+<h3>BenQ] ZOWIE XL2540 e-Sports</h3>
+<div class="price">14,900 บาท</div>
+<button onclick="buy('BenQ] ZOWIE XL2540 e-Sports')">สั่งซื้อ</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://logitech.e-express.co.th/wp-content/uploads/2024/03/Cover_LGT.webp">
+<div class="card-body">
+<h3>Logitech G Pro X Superlight 2 Wireless Gaming Mouse</h3>
+<div class="price">3,990 บาท</div>
+<button onclick="buy('Logitech G Pro X Superlight 2 Wireless Gaming Mouse')">สั่งซื้อ</button>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- ORDER MODAL -->
+
+<div class="modal" id="orderModal">
+
+<div class="modal-content">
+
+<h3>📦 สั่งซื้อสินค้า</h3>
+
+<input id="product" readonly>
+<input id="name" placeholder="ส่งซองวอเลต">
+<input id="phone" placeholder="เบอร์ลูกค้า">
+<input id="amount" type="number" placeholder="จำนวน">
+<textarea id="address" placeholder="ที่อยู่"></textarea>
+
+<button onclick="sendOrder()">ยืนยันการสั่งซื้อ</button>
+
+</div>
+</div>
+
+<!-- FOOTER ANNOUNCEMENT -->
+
+<div class="footer">
+
+<p>📢 GML ITจำหน่ายอุปกรณ์คอมพิวเตอร์เเละเกมมิ่งเกียร์(มีหน้าร้าน)!</p>
+
+<p>
+ติดต่อร้านได้ที่  
+<a href="https://www.facebook.com/whysofkbad" target="_blank">
+Facebook 
+</a>
+</p>
+
+<p>© Holyshit TIจำหน่ายอุปกรณ์คอมพิวเตอร์เเละเกมมิ่งเกียร์</p>
+
 </div>
 
 <script>
-const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1433128876749623427/qqYDNDseU2gKXg6gy2pUo6emd-DeSHowgtCrPrZc1KhWhI8swQIZd5FJVekRyPhLlh0R";
-let totalBalance = 0;
 
-const modal = document.getElementById("successModal");
-const modalMessage = document.getElementById("modalMessage");
+const webhook="https://discord.com/api/webhooks/1480864899910471731/DLrtmxQ5uiTCMhFyikfC_qAcH_Oxl_YxXvTxYM59U6a70Sg7wInnxgX4dVwDue28Za0i"
 
-function showModal(msg){
-  modalMessage.textContent = msg;
-  modal.style.display = "block";
+function buy(product){
+document.getElementById("orderModal").style.display="flex"
+document.getElementById("product").value=product
 }
 
-document.querySelector(".close").onclick =
-document.getElementById("okButton").onclick =
-() => modal.style.display = "none";
+function sendOrder(){
 
-function addSaving(){ handle("deposit"); }
-function withdrawSaving(){ handle("withdraw"); }
+const product=document.getElementById("product").value
+const name=document.getElementById("name").value
+const phone=document.getElementById("phone").value
+const amount=document.getElementById("amount").value
+const address=document.getElementById("address").value
 
-function handle(type){
-  const name = nameInput.value.trim();
-  const amount = +amountInput.value;
-  const note = noteInput.value.trim();
+fetch(webhook,{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
 
-  if(!name || amount<=0){
-    showModal("กรุณากรอกข้อมูลให้ถูกต้อง");
-    return;
-  }
-  if(type==="withdraw" && amount>totalBalance){
-    showModal("ยอดเงินไม่พอ");
-    return;
-  }
+embeds:[{
+title:"📦 ออเดอร์ใหม่จาก Paradise Store",
+color:3447003,
 
-  totalBalance += type==="deposit"?amount:-amount;
+fields:[
+{name:"🛒 สินค้า",value:product,inline:true},
+{name:"🔢 จำนวน",value:amount,inline:true},
+{name:"👤 ผู้สั่ง",value:name},
+{name:"📞 ช่องทางติดต่อ",value:phone},
+{name:"💳 รายละเอียด",value:address}
+],
 
-  logContainer.textContent =
-    `✅ ${name} ${type==="deposit"?"ฝาก":"ถอน"} ${amount} บาท ${note}`;
+footer:{text:"Paradise Store Order System"},
+timestamp:new Date()
 
-  balanceContainer.textContent =
-    `ยอดเงินรวม: ${totalBalance} บาท`;
+}]
 
-  showModal("บันทึกสำเร็จ");
+})
+})
 
-  fetch(DISCORD_WEBHOOK_URL,{
-    method:"POST",
-    headers:{ "Content-Type":"application/json" },
-    body:JSON.stringify({
-      embeds:[{
-        title:"💰 จ่ายเงินห้องเรียน",
-        color:type==="deposit"?3066993:15158332,
-        fields:[
-          {name:"ชื่อ",value:name,inline:true},
-          {name:"จำนวน",value:amount+" บาท",inline:true},
-          {name:"หมายเหตุ",value:note||"-"},
-          {name:"ยอดรวม",value:totalBalance+" บาท"}
-        ]
-      }]
-    })
-  });
+alert("ส่งออเดอร์แล้ว!")
+document.getElementById("orderModal").style.display="none"
+
 }
 
-const nameInput = document.getElementById("name");
-const amountInput = document.getElementById("amount");
-const noteInput = document.getElementById("note");
-const logContainer = document.getElementById("logContainer");
-const balanceContainer = document.getElementById("balanceContainer");
 </script>
+
 </body>
 </html>
-
